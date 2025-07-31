@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShadowLens Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 500px;
+            min-height: 700px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header h1 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .header p {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .current-analysis {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .analysis-status {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        .risk-score {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .risk-number {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .risk-label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .risk-description {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .risk-safe { color: #4CAF50; }
+        .risk-moderate { color: #FF9800; }
+        .risk-caution { color: #FF5722; }
+        .risk-dangerous { color: #f44336; }
+
+        .analysis-details {
+            margin-top: 20px;
+        }
+
+        .detail-section {
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .detail-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+
+        .threat-list {
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .threat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            font-size: 11px;
+            border-left: 3px solid #f44336;
+        }
+
+        .deception-item {
+            background: rgba(255, 193, 7, 0.2);
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            font-size: 11px;
+            border-left: 3px solid #FFC107;
+        }
+
+        .compliance-item {
+            background: rgba(33, 150, 243, 0.2);
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            font-size: 11px;
+            border-left: 3px solid #2196F3;
+        }
+
+        .student-summary {
+            background: rgba(76, 175, 80, 0.2);
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 12px;
+            border-left: 3px solid #4CAF50;
+        }
+
+        .privacy-links {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .link-item {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 12px;
+            margin-bottom: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            font-size: 12px;
+            transition: background 0.3s;
+        }
+
+        .link-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid #fff;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: rgba(244, 67, 54, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-primary {
+            background: rgba(76, 175, 80, 0.8);
+        }
+
+        .btn-primary:hover {
+            background: rgba(76, 175, 80, 1);
+        }
+
+        .features-used {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 11px;
+        }
+
+        .feature-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin: 2px;
+            font-size: 10px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            text-align: center;
+            padding: 20px;
+            background: rgba(244, 67, 54, 0.1);
+            border-radius: 8px;
+            margin: 20px;
+        }
+
+        .error h3 {
+            color: #f44336;
+            margin-bottom: 10px;
+        }
+
+        .threat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            border-left: 3px solid #f44336;
+        }
+
+        .student-summary {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .metric-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .metric-label {
+            font-size: 10px;
+            opacity: 0.8;
+            margin-bottom: 4px;
+        }
+
+        .metric-value {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .metric-value.risk-high {
+            color: #ff9800;
+        }
+
+        .metric-value.risk-critical {
+            color: #f44336;
+        }
+
+        .metric-value.risk-medium {
+            color: #ffc107;
+        }
+
+        .metric-value.risk-low {
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔒 ShadowLens</h1>
+        <p>Enhanced Privacy Guardian for Educational Websites</p>
+        <div id="current-url" style="font-size: 10px; margin-top: 5px; opacity: 0.7; word-break: break-all; max-width: 100%;"></div>
+    </div>
+
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Analyzing current page...</p>
+        </div>
+
+    <div id="error" class="error" style="display: none;">
+        <h3>⚠️ Analysis Error</h3>
+        <p id="error-message">Unable to analyze this page</p>
+        <button class="btn btn-primary" onclick="retryAnalysis()">Retry Analysis</button>
+    </div>
+
+    <div id="analysis" style="display: none;">
+        <div class="current-analysis">
+            <div class="risk-score">
+                <div id="risk-number" class="risk-number">-</div>
+                <div id="risk-label" class="risk-label">Analyzing...</div>
+                <div id="risk-description" class="risk-description">Privacy assessment in progress</div>
+                <div id="recommendation-reason" class="recommendation-reason" style="font-size: 11px; margin-top: 5px; opacity: 0.8;"></div>
+            </div>
+
+            <div id="features-used" class="features-used" style="display: none;">
+                <strong>Features Used:</strong>
+                <div id="features-list"></div>
+            </div>
+
+            <div class="analysis-details">
+                <div class="detail-section">
+                    <div class="section-title">📊 Analysis Summary</div>
+                    <div id="analysis-summary" class="detail-item">Loading...</div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="section-title">📝 Student-Friendly Summary</div>
+                    <div id="student-summary" class="student-summary">Loading...</div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="section-title">🔒 Privacy Threats</div>
+                    <div id="privacy-threats" class="threat-list">
+                        <div class="detail-item">No threats detected</div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="section-title">📊 Detailed Risk Metrics</div>
+                    <div id="risk-metrics" class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-label">Data Monetization</div>
+                            <div class="metric-value" id="data-monetization">-</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">Sensitive Data</div>
+                            <div class="metric-value" id="sensitive-data">-</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">Behavioral Tracking</div>
+                            <div class="metric-value" id="behavioral-tracking">-</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">Legal Concerns</div>
+                            <div class="metric-value" id="legal-concerns">-</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">Data Retention</div>
+                            <div class="metric-value" id="data-retention">-</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">Third-Party Access</div>
+                            <div class="metric-value" id="third-party">-</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">International Transfer</div>
+                            <div class="metric-value" id="international">-</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">Form Risks</div>
+                            <div class="metric-value" id="form-risks">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="section-title">📝 Form Analysis</div>
+                    <div id="form-analysis" class="detail-item">Loading...</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="privacy-links" class="privacy-links" style="display: none;">
+            <div class="section-title">🔍 Privacy Policy Links Found</div>
+            <div id="links-list"></div>
+    </div>
+
+        <div class="action-buttons">
+            <button class="btn" onclick="refreshAnalysis()">🔄 Refresh</button>
+            <button class="btn btn-primary" onclick="openCurrentPage()">🌐 View Page</button>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html> 

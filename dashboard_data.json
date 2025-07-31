@@ -1,0 +1,218 @@
+{
+  "websiteHistory": [
+    {
+      "url": "https://www.impacteers.com/home/policy",
+      "timestamp": "2025-07-29T19:24:19.000Z",
+      "riskScore": 4,
+      "recommendation": "Caution",
+      "privacyThreats": [],
+      "forms": 0,
+      "sensitiveFields": 0,
+      "websiteType": "General",
+      "verificationStatus": "Poor",
+      "verificationScore": 2,
+      "sslCertificate": true,
+      "isoCertifications": 0,
+      "analysis": {
+        "ai_model": "enhanced-fallback",
+        "brand_impersonation": [],
+        "deception_indicators": [],
+        "features_used": [
+          "AI Summarization",
+          "Deception Detection",
+          "FERPA/GDPR Compliance Checking",
+          "Enhanced Risk Scoring",
+          "Student-Friendly Summary"
+        ],
+        "ferpa_compliance": [],
+        "gdpr_compliance": [],
+        "privacy_threats": [],
+        "recommendation": "Caution",
+        "red_flags": [
+          "General platform detected - data collection risk"
+        ],
+        "risk_score": 4,
+        "student_summary": "Unable to generate summary",
+        "summary": "Analysis of General website with 0 privacy threats detected"
+      }
+    },
+    {
+      "url": "https://www.tensorflow.org/",
+      "timestamp": "2025-07-29T19:12:32.000Z",
+      "riskScore": 2,
+      "recommendation": "Moderate",
+      "privacyThreats": [],
+      "forms": 1,
+      "sensitiveFields": 0,
+      "websiteType": "E-commerce",
+      "verificationStatus": "Poor",
+      "verificationScore": 2,
+      "sslCertificate": true,
+      "isoCertifications": 0,
+      "analysis": {
+        "ai_model": "enhanced-fallback",
+        "brand_impersonation": [],
+        "deception_indicators": [],
+        "features_used": [
+          "AI Summarization",
+          "Deception Detection",
+          "FERPA/GDPR Compliance Checking",
+          "Enhanced Risk Scoring",
+          "Student-Friendly Summary"
+        ],
+        "ferpa_compliance": [],
+        "gdpr_compliance": [],
+        "privacy_threats": [],
+        "recommendation": "Moderate",
+        "red_flags": [
+          "E-commerce platform detected - data collection risk"
+        ],
+        "risk_score": 2,
+        "student_summary": "Unable to generate summary",
+        "summary": "Analysis of E-commerce website with 0 privacy threats detected"
+      }
+    },
+    {
+      "url": "https://www.amazon.com",
+      "timestamp": "2025-07-29T19:09:03.000Z",
+      "riskScore": 4,
+      "recommendation": "Caution",
+      "privacyThreats": [],
+      "forms": 2,
+      "sensitiveFields": 0,
+      "websiteType": "Educational",
+      "verificationStatus": "Moderate",
+      "verificationScore": 3,
+      "sslCertificate": true,
+      "isoCertifications": 0,
+      "analysis": {
+        "ai_model": "enhanced-fallback",
+        "brand_impersonation": [],
+        "deception_indicators": [
+          {
+            "examples": [
+              "affiliates"
+            ],
+            "matches": 1,
+            "pattern": "\\b(third parties|partners|affiliates|service providers)\\b",
+            "type": "deceptive_language"
+          }
+        ],
+        "features_used": [
+          "AI Summarization",
+          "Deception Detection",
+          "FERPA/GDPR Compliance Checking",
+          "Enhanced Risk Scoring",
+          "Student-Friendly Summary"
+        ],
+        "ferpa_compliance": [
+          "Student data collection without explicit consent"
+        ],
+        "gdpr_compliance": [],
+        "privacy_threats": [],
+        "recommendation": "Caution",
+        "red_flags": [
+          "Educational platform detected - data collection risk"
+        ],
+        "risk_score": 4,
+        "student_summary": "Unable to generate summary",
+        "summary": "Analysis of Educational website with 0 privacy threats detected"
+      }
+    },
+    {
+      "url": "https://www.stackoverflow.com",
+      "timestamp": "2025-07-29T19:06:43.000Z",
+      "riskScore": 4,
+      "recommendation": "Caution",
+      "privacyThreats": [
+        "Privacy term found: tracking"
+      ],
+      "forms": 5,
+      "sensitiveFields": 15,
+      "websiteType": "Social Media",
+      "verificationStatus": "Poor",
+      "verificationScore": 2,
+      "sslCertificate": true,
+      "isoCertifications": 0,
+      "analysis": {
+        "ai_model": "enhanced-fallback",
+        "brand_impersonation": [],
+        "deception_indicators": [
+          {
+            "examples": [
+              "tracking",
+              "tracking"
+            ],
+            "matches": 2,
+            "pattern": "\\b(cookies|pixels|beacons|fingerprinting|tracking)\\b",
+            "type": "deceptive_language"
+          }
+        ],
+        "features_used": [
+          "AI Summarization",
+          "Deception Detection",
+          "FERPA/GDPR Compliance Checking",
+          "Enhanced Risk Scoring",
+          "Student-Friendly Summary"
+        ],
+        "ferpa_compliance": [],
+        "gdpr_compliance": [],
+        "privacy_threats": [
+          "Privacy term found: tracking"
+        ],
+        "recommendation": "Caution",
+        "red_flags": [
+          "Social Media platform detected - data collection risk"
+        ],
+        "risk_score": 4,
+        "student_summary": "Unable to generate summary",
+        "summary": "Analysis of Social Media website with 1 privacy threats detected"
+      }
+    },
+    {
+      "url": "https://www.github.com",
+      "timestamp": "2025-07-29T19:05:49.000Z",
+      "riskScore": 3,
+      "recommendation": "Moderate",
+      "privacyThreats": [],
+      "forms": 5,
+      "sensitiveFields": 6,
+      "websiteType": "Educational",
+      "verificationStatus": "Moderate",
+      "verificationScore": 3,
+      "sslCertificate": true,
+      "isoCertifications": 0,
+      "analysis": {
+        "ai_model": "enhanced-fallback",
+        "brand_impersonation": [],
+        "deception_indicators": [
+          {
+            "examples": [
+              "partners"
+            ],
+            "matches": 1,
+            "pattern": "\\b(third parties|partners|affiliates|service providers)\\b",
+            "type": "deceptive_language"
+          }
+        ],
+        "features_used": [
+          "AI Summarization",
+          "Deception Detection",
+          "FERPA/GDPR Compliance Checking",
+          "Enhanced Risk Scoring",
+          "Student-Friendly Summary"
+        ],
+        "ferpa_compliance": [],
+        "gdpr_compliance": [],
+        "privacy_threats": [],
+        "recommendation": "Moderate",
+        "red_flags": [
+          "Educational platform detected - data collection risk"
+        ],
+        "risk_score": 3,
+        "student_summary": "Unable to generate summary",
+        "summary": "Analysis of Educational website with 0 privacy threats detected"
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+# Core web scraping and analysis
+requests>=2.31.0
+beautifulsoup4>=4.13.0
+selenium>=4.15.0
+webdriver-manager>=4.0.0
+
+# Backend framework
+Flask>=2.3.0
+Flask-CORS>=4.0.0
+gunicorn>=21.2.0
+
+# AI and machine learning
+google-generativeai>=0.3.0
+transformers>=4.35.0
+torch>=2.0.0
+
+# Data processing
+numpy>=1.24.0
+regex>=2023.0.0
+
+# Environment and configuration
+python-dotenv>=1.0.0
+PyYAML>=6.0.0
+
+# Development and testing
+pytest>=7.4.0
+black>=23.0.0
+flake8>=6.0.0 
