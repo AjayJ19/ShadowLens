@@ -7,7 +7,7 @@ ShadowLens Chrome Extension automatically detects and analyzes privacy policies,
 
 ### Step 1: Start the Backend Server
 ```bash
-cd /Users/lingesh/astrixxx/hackathon
+cd /Users/Ajay/astrixxx/hackathon
 source venv/bin/activate
 export GEMINI_API_KEY="API KEY"
 python3 backend/app.py
