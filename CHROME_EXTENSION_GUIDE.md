@@ -9,7 +9,7 @@ ShadowLens Chrome Extension automatically detects and analyzes privacy policies,
 ```bash
 cd /Users/lingesh/astrixxx/hackathon
 source venv/bin/activate
-export GEMINI_API_KEY="AIzaSyCpxYzcgkVPk1X8QiC05Rc6-KNd-np81i8"
+export GEMINI_API_KEY="API KEY"
 python3 backend/app.py
 ```
 
@@ -19,7 +19,7 @@ python3 backend/app.py
 3. **Click "Load unpacked"**
 4. **Select the `chrome-extension` folder:**
    ```
-   /Users/lingesh/astrixxx/hackathon/chrome-extension
+   /Users/Ajay/astrixxx/hackathon/chrome-extension
    ```
 
 ## 🎯 How It Works
